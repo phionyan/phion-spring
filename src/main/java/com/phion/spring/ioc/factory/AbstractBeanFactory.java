@@ -1,6 +1,6 @@
 package com.phion.spring.ioc.factory;
 
-import com.phion.spring.ioc.BeanFactory;
+import com.phion.spring.ioc.BeanDefinition;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,7 +30,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * @param beanDefinition 对象定义信息
      */
     @Override
-    public void registerBeanDefinition(String name,BeanDefinition beanDefinition){
+    public void registerBeanDefinition(String name,BeanDefinition beanDefinition) throws Exception {
 
         Object bean = doCreateBean(beanDefinition);
 
@@ -44,5 +44,5 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * @param beanDefinition bean定义信息
      * @return 注入的bean
      */
-    protected abstract Object doCreateBean(BeanDefinition beanDefinition);
+    protected abstract Object doCreateBean(BeanDefinition beanDefinition) throws IllegalAccessException, InstantiationException, NoSuchFieldException, Exception;
 }

@@ -12,3 +12,6 @@ tiny-spring
 
 * 抽出beanfactory接口作为规范，提供AbstractBeanFactory作为默认实现，
 另外使用AutowireBeanFactory实现自动装配的核心方法
+
+
+## step-3：实现属性注入

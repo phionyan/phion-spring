@@ -1,6 +1,6 @@
-package com.phion.spring.ioc;
+package com.phion.spring.ioc.factory;
 
-import com.phion.spring.ioc.factory.BeanDefinition;
+import com.phion.spring.ioc.BeanDefinition;
 
 /**
  * bean工厂规范，定义基本功能
@@ -21,5 +21,5 @@ public interface BeanFactory {
      * @param name bean名称
      * @param beanDefinition bean定义信息
      */
-    void registerBeanDefinition(String name, BeanDefinition beanDefinition);
+    void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception;
 }

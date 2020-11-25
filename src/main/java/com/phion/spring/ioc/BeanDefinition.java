@@ -1,4 +1,6 @@
-package com.phion.spring.ioc.factory;
+package com.phion.spring.ioc;
+
+import java.util.List;
 
 /**
  * 注入一个bean的时候，传入的对象
@@ -15,6 +17,9 @@ public class BeanDefinition {
     private Class beanClass;
 
     private String beanClassName;
+
+    //存储对象的属性信息
+    private PropertyValues propertyValues;
 
     //使用无参构造器，通过属于注入bean
     public BeanDefinition() {
@@ -38,6 +43,10 @@ public class BeanDefinition {
         return beanClass;
     }
 
+    public void setBeanClass(Class beanClass) {
+        this.beanClass = beanClass;
+    }
+
     public String getBeanClassName() {
         return beanClassName;
     }
@@ -48,5 +57,13 @@ public class BeanDefinition {
 
     public void setBean(Object bean) {
         this.bean = bean;
+    }
+
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
     }
 }
