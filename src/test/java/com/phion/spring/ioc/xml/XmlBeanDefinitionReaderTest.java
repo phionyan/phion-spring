@@ -20,7 +20,7 @@ public class XmlBeanDefinitionReaderTest {
         for (Map.Entry<String, BeanDefinition> entry : registry.entrySet()) {
             String key = entry.getKey();
             BeanDefinition value = entry.getValue();
-            System.out.println(String.format("beanName:%s-----------class:%s",key,value.getBeanClassName()));
+            System.out.println(String.format("beanName:%s-----------class:%s",key,value));
         }
         Assert.assertTrue(registry.size() > 0);
     }

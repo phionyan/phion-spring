@@ -40,4 +40,12 @@ public class PropertyValue {
     public int hashCode() {
         return Objects.hash(name, value);
     }
+
+    @Override
+    public String toString() {
+        return "PropertyValue{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }
