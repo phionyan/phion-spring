@@ -1,6 +1,4 @@
-package com.phion.spring.ioc;
-
-import java.util.List;
+package com.phion.spring.ioc.beans;
 
 /**
  * 注入一个bean的时候，传入的对象

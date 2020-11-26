@@ -1,4 +1,4 @@
-package com.phion.spring.ioc.support;
+package com.phion.spring.support;
 
 /**
  * @author yanful

@@ -1,4 +1,4 @@
-tiny-spring
+tiny-spring ,created by phion ！
 =====
 
 步骤：
@@ -31,10 +31,13 @@ tiny-spring
 另外这里抽象出一个Resource接口表示资源文件，并提供各种实现类，使得可以通过不同方式读取配置信息
 
 
-## setp-5 : 实现注入bean时传递引用类型
+## step-5 : 实现注入bean时传递引用类型
 
 * 当一个bean的propperty为另一个bean时，传入应用类型
 默认为延迟加载，即bean直到被使用时才会被创建
 提供手动预加载的功能
 
+## step-6 : 实现上下文
 
+* 通过使用ApplicationContext，可以无限拓展spring的功能，BeanFactory作为一个DI模块，成为应用上下文的核心部分。
+通过应用上下文，我们可以方便实现ioc，而不用注意DI和资源解析器的交互。

@@ -1,4 +1,4 @@
-package com.phion.spring.ioc;
+package com.phion.spring.ioc.beans;
 
 /**
  * bean加载器定义

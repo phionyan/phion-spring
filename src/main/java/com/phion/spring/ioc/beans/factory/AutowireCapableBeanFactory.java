@@ -1,8 +1,8 @@
-package com.phion.spring.ioc.factory;
+package com.phion.spring.ioc.beans.factory;
 
-import com.phion.spring.ioc.BeanDefinition;
+import com.phion.spring.ioc.beans.BeanDefinition;
 import com.phion.spring.ioc.BeanReference;
-import com.phion.spring.ioc.PropertyValue;
+import com.phion.spring.ioc.beans.PropertyValue;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
  * @author yanful
  */
 @Slf4j
-public class AutowireCapableFactory extends AbstractBeanFactory {
+public class AutowireCapableBeanFactory extends AbstractBeanFactory {
 
     @Override
     protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {

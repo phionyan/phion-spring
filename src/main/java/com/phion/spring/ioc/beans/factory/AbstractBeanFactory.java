@@ -1,6 +1,6 @@
-package com.phion.spring.ioc.factory;
+package com.phion.spring.ioc.beans.factory;
 
-import com.phion.spring.ioc.BeanDefinition;
+import com.phion.spring.ioc.beans.BeanDefinition;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
@@ -31,7 +31,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      */
     @Override
     public Object getBean(String name) throws Exception {
-        log.info("getBean() , name is {},current beans is {}",name,beanDefinitionMap.values());
         BeanDefinition beanDefinition = beanDefinitionMap.get(name);
         if(Objects.isNull(beanDefinition)){
             throw new IllegalArgumentException("No bean named " + name + " is defined");
@@ -51,7 +50,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * @param name 对象名称，唯一标识
      * @param beanDefinition 对象定义信息
      */
-    @Override
     public void registerBeanDefinition(String name,BeanDefinition beanDefinition) throws Exception {
 
         beanDefinitionMap.put(name,beanDefinition);
@@ -62,11 +60,9 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * 提前初始化bean
      */
     public void preInstantiateSingletons() throws Exception {
-        log.info("------------------start preInstantiateSingletons()-----------------");
         for (String name : beanDefinitionNames) {
             getBean(name);
         }
-        log.info("------------------finish preInstantiateSingletons()-----------------");
     }
 
     /**

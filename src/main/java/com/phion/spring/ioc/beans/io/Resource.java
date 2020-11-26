@@ -1,4 +1,4 @@
-package com.phion.spring.ioc.io;
+package com.phion.spring.ioc.beans.io;
 
 import java.io.IOException;
 import java.io.InputStream;

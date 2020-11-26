@@ -1,6 +1,6 @@
-package com.phion.spring.ioc;
+package com.phion.spring.ioc.beans;
 
-import com.phion.spring.ioc.io.ResourceLoader;
+import com.phion.spring.ioc.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

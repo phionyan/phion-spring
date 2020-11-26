@@ -1,9 +1,13 @@
-package com.phion.spring.ioc.xml;
+package com.phion.spring.ioc.beans.xml;
 
 import com.phion.spring.ioc.*;
-import com.phion.spring.ioc.io.ResourceLoader;
-import com.phion.spring.ioc.support.CollectionsUtils;
-import com.phion.spring.ioc.support.StringUtils;
+import com.phion.spring.ioc.beans.AbstractBeanDefinitionReader;
+import com.phion.spring.ioc.beans.BeanDefinition;
+import com.phion.spring.ioc.beans.PropertyValue;
+import com.phion.spring.ioc.beans.PropertyValues;
+import com.phion.spring.ioc.beans.io.ResourceLoader;
+import com.phion.spring.support.CollectionsUtils;
+import com.phion.spring.support.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.Document;
 import org.dom4j.Element;

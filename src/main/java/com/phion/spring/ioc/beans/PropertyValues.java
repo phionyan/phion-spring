@@ -1,4 +1,4 @@
-package com.phion.spring.ioc;
+package com.phion.spring.ioc.beans;
 
 import lombok.extern.slf4j.Slf4j;
 

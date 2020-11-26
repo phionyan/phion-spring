@@ -1,10 +1,11 @@
 package com.phion.spring.ioc;
 
-import com.phion.spring.ioc.factory.AbstractBeanFactory;
-import com.phion.spring.ioc.factory.AutowireCapableFactory;
-import com.phion.spring.ioc.factory.BeanFactory;
-import com.phion.spring.ioc.io.ResourceLoader;
-import com.phion.spring.ioc.xml.XmlBeanDefinitionReader;
+import com.phion.spring.ioc.beans.AbstractBeanDefinitionReader;
+import com.phion.spring.ioc.beans.BeanDefinition;
+import com.phion.spring.ioc.beans.factory.AbstractBeanFactory;
+import com.phion.spring.ioc.beans.factory.AutowireCapableBeanFactory;
+import com.phion.spring.ioc.beans.io.ResourceLoader;
+import com.phion.spring.ioc.beans.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
 import java.util.Map;
@@ -27,10 +28,10 @@ public class BeanFactoryTest {
         definitionReader.loadBeanDefinitions("application.xml");
 
         //2、注册bean
-        AbstractBeanFactory beanFactory = new AutowireCapableFactory();
-        Map<String,BeanDefinition> registry = definitionReader.getRegistry();
-        for(Map.Entry<String,BeanDefinition> entry : registry.entrySet()){
-            beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+        Map<String, BeanDefinition> registry = definitionReader.getRegistry();
+        for (Map.Entry<String, BeanDefinition> entry : registry.entrySet()) {
+            beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
         }
 
         //3、获取bean
@@ -50,10 +51,10 @@ public class BeanFactoryTest {
         definitionReader.loadBeanDefinitions("application.xml");
 
         //2、注册bean
-        AbstractBeanFactory beanFactory = new AutowireCapableFactory();
-        Map<String,BeanDefinition> registry = definitionReader.getRegistry();
-        for(Map.Entry<String,BeanDefinition> entry : registry.entrySet()){
-            beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+        Map<String, BeanDefinition> registry = definitionReader.getRegistry();
+        for (Map.Entry<String, BeanDefinition> entry : registry.entrySet()) {
+            beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
         }
 
         //3、预加载

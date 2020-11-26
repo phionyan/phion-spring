@@ -1,10 +1,9 @@
-package com.phion.spring.ioc.io;
+package com.phion.spring.ioc.beans.io;
 
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 
 /**
  * @author yanful
