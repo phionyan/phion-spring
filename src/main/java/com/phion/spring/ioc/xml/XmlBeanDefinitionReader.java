@@ -1,11 +1,9 @@
 package com.phion.spring.ioc.xml;
 
-import com.phion.spring.ioc.AbstractBeanDefinitionReader;
-import com.phion.spring.ioc.BeanDefinition;
-import com.phion.spring.ioc.PropertyValue;
-import com.phion.spring.ioc.PropertyValues;
+import com.phion.spring.ioc.*;
 import com.phion.spring.ioc.io.ResourceLoader;
 import com.phion.spring.ioc.support.CollectionsUtils;
+import com.phion.spring.ioc.support.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -138,8 +136,19 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         //读取属性信息
         String name = property.attributeValue("name");
         String value = property.attributeValue("value");
-        //注入到属性集合
-        PropertyValue pv = new PropertyValue(name, value);
+        PropertyValue pv = null;
+        if(StringUtils.isNotEmpty(value)){
+            pv = new PropertyValue(name, value);
+        }else {
+            //判断是否是引用类型
+            String ref = property.attributeValue("ref");
+            if(StringUtils.isEmpty(ref)){
+                throw new IllegalArgumentException("Configuration problem: <property> element for property '"
+                        + name + "' must specify a ref or value");
+            }
+            BeanReference reference = new BeanReference(ref);
+            pv = new PropertyValue(name, reference);
+        }
         propertyValues.addPropertyValue(pv);
     }
 }

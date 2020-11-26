@@ -10,8 +10,11 @@ public class HelloWorldService {
 
     private String msg;
 
+    private User user;
+
     public void helloWorld(){
-        System.out.println(getMsg());
+        System.out.printf("%s ,who is %s yesrs old ,%s ,say :%s%n",user.getName(),user.getAge(),
+                user.getGender(),msg);
     }
 
 }

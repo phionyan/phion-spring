@@ -2,5 +2,12 @@
 <beans>
     <bean name="helloService" class="com.phion.spring.ioc.HelloWorldService">
         <property name="msg" value="ioc from xml!"/>
+        <property name="user" ref="phion"/>
     </bean>
+    <bean name="phion" class="com.phion.spring.ioc.User">
+        <property name="name" value="phion yan"/>
+        <property name="age" value="17"/>
+        <property name="gender" value="男"/>
+    </bean>
+
 </beans>

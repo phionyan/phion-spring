@@ -14,7 +14,7 @@ public interface BeanFactory {
      * @param name bean名称
      * @return 被ioc容器管理的bean
      */
-    Object getBean(String name);
+    Object getBean(String name) throws Exception;
 
     /**
      * 往ioc容器中注册一个bean

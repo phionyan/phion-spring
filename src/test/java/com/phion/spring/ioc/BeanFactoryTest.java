@@ -1,5 +1,6 @@
 package com.phion.spring.ioc;
 
+import com.phion.spring.ioc.factory.AbstractBeanFactory;
 import com.phion.spring.ioc.factory.AutowireCapableFactory;
 import com.phion.spring.ioc.factory.BeanFactory;
 import com.phion.spring.ioc.io.ResourceLoader;
@@ -13,21 +14,52 @@ import java.util.Map;
  */
 public class BeanFactoryTest {
 
+    /**
+     * 测试延迟加载，可以看出，当调用doCreateBean方法前，
+     * bena已经注册到bean工厂，但是未实例化(bean=null)
+     * 当我们使用这个类
+     */
     @Test
-    public void test() throws Exception {
+    public void testLazy() throws Exception {
 
         //1、读取配置文件
         AbstractBeanDefinitionReader definitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
         definitionReader.loadBeanDefinitions("application.xml");
 
         //2、注册bean
-        BeanFactory beanFactory = new AutowireCapableFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableFactory();
         Map<String,BeanDefinition> registry = definitionReader.getRegistry();
         for(Map.Entry<String,BeanDefinition> entry : registry.entrySet()){
             beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
         }
 
         //3、获取bean
+        HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloService");
+        helloWorldService.helloWorld();
+
+    }
+
+
+    /**
+     * 测试预加载
+     */
+    @Test
+    public void testPreInitiate() throws Exception {
+        //1、读取配置文件
+        AbstractBeanDefinitionReader definitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
+        definitionReader.loadBeanDefinitions("application.xml");
+
+        //2、注册bean
+        AbstractBeanFactory beanFactory = new AutowireCapableFactory();
+        Map<String,BeanDefinition> registry = definitionReader.getRegistry();
+        for(Map.Entry<String,BeanDefinition> entry : registry.entrySet()){
+            beanFactory.registerBeanDefinition(entry.getKey(),entry.getValue());
+        }
+
+        //3、预加载
+        beanFactory.preInstantiateSingletons();
+
+        //4、获取bean
         HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloService");
         helloWorldService.helloWorld();
     }

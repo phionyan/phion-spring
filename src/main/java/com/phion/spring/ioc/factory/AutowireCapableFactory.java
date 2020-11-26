@@ -1,7 +1,9 @@
 package com.phion.spring.ioc.factory;
 
 import com.phion.spring.ioc.BeanDefinition;
+import com.phion.spring.ioc.BeanReference;
 import com.phion.spring.ioc.PropertyValue;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
 
@@ -11,12 +13,13 @@ import java.lang.reflect.Field;
  *
  * @author yanful
  */
+@Slf4j
 public class AutowireCapableFactory extends AbstractBeanFactory {
 
     @Override
     protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
-
         Object bean = createBeanInstance(beanDefinition);
+        beanDefinition.setBean(bean);
         applyPropertyValues(bean, beanDefinition);
         return bean;
     }
@@ -34,14 +37,20 @@ public class AutowireCapableFactory extends AbstractBeanFactory {
      *
      * 这里采用反射注入属性
      */
-    private void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws NoSuchFieldException, IllegalAccessException {
+    private void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception {
 
         for(PropertyValue pv : beanDefinition.getPropertyValues().getPropertyValues()){
             //找出bean中对应的属性
             Field declaredFiled = bean.getClass().getDeclaredField(pv.getName());
+            //找出对应属性值
+            Object value = pv.getValue();
+            if(value instanceof BeanReference){
+                BeanReference reference = (BeanReference) value;
+                value = getBean(reference.getName());
+            }
             //注入属性值，忽略访问限制
             declaredFiled.setAccessible(true);
-            declaredFiled.set(bean,pv.getValue());
+            declaredFiled.set(bean,value);
         }
     }
 }

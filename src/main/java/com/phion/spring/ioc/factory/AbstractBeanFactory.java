@@ -1,8 +1,9 @@
 package com.phion.spring.ioc.factory;
 
 import com.phion.spring.ioc.BeanDefinition;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -12,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author yanful
  */
+@Slf4j
 public abstract class AbstractBeanFactory implements BeanFactory {
 
     /**
@@ -19,24 +21,52 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      */
     private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
+    //使用list存储所有bean名称不可变
+    private final List<String> beanDefinitionNames = new ArrayList<>();
+
+    /**
+     * 对延迟加载适配
+     * @param name bean名称
+     * @return bean
+     */
     @Override
-    public Object getBean(String name) {
-        return beanDefinitionMap.get(name).getBean();
+    public Object getBean(String name) throws Exception {
+        log.info("getBean() , name is {},current beans is {}",name,beanDefinitionMap.values());
+        BeanDefinition beanDefinition = beanDefinitionMap.get(name);
+        if(Objects.isNull(beanDefinition)){
+            throw new IllegalArgumentException("No bean named " + name + " is defined");
+        }
+        Object bean = beanDefinition.getBean();
+        if(Objects.isNull(bean)){
+            bean =doCreateBean(beanDefinition);
+        }
+        return bean;
     }
 
     /**
      * 注入对象的方法
+     *
+     * 默认使用延迟加载，即使用时才实例化bean
+     *
      * @param name 对象名称，唯一标识
      * @param beanDefinition 对象定义信息
      */
     @Override
     public void registerBeanDefinition(String name,BeanDefinition beanDefinition) throws Exception {
 
-        Object bean = doCreateBean(beanDefinition);
-
-        beanDefinition.setBean(bean);
-
         beanDefinitionMap.put(name,beanDefinition);
+        beanDefinitionNames.add(name);
+    }
+
+    /**
+     * 提前初始化bean
+     */
+    public void preInstantiateSingletons() throws Exception {
+        log.info("------------------start preInstantiateSingletons()-----------------");
+        for (String name : beanDefinitionNames) {
+            getBean(name);
+        }
+        log.info("------------------finish preInstantiateSingletons()-----------------");
     }
 
     /**
