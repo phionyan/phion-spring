@@ -4,6 +4,9 @@
         <property name="msg" value="ioc from xml!"/>
         <property name="user" ref="phion"/>
     </bean>
+    <bean name="helloService1" class="com.phion.spring.aop.HelloServiceImpl">
+        <property name="msg" value="hello world"/>
+    </bean>
     <bean name="phion" class="com.phion.spring.ioc.User">
         <property name="name" value="phion yan"/>
         <property name="age" value="17"/>
