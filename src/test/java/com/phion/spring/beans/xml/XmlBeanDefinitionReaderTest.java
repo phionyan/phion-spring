@@ -1,7 +1,7 @@
-package com.phion.spring.ioc.beans.xml;
+package com.phion.spring.beans.xml;
 
-import com.phion.spring.ioc.beans.BeanDefinition;
-import com.phion.spring.ioc.beans.io.ResourceLoader;
+import com.phion.spring.beans.BeanDefinition;
+import com.phion.spring.beans.io.ResourceLoader;
 import org.junit.Assert;
 import org.junit.Test;
 

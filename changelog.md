@@ -41,3 +41,13 @@ tiny-spring ,created by phion ！
 
 * 通过使用ApplicationContext，可以无限拓展spring的功能，BeanFactory作为一个DI模块，成为应用上下文的核心部分。
 通过应用上下文，我们可以方便实现ioc，而不用注意DI和资源解析器的交互。
+
+
+## step-7 ： 实现AOP功能
+
+* AOP功能的本质是通过代理对象执行方法，从而增强方法达到切面的效果。
+spring中动态代理的实现方式有两种，JDK动态代理和CGLIB动态代理
+JDK动态代理是利用反射生成某个接口的实现类，从而代理原来的实现类，实现增强
+CGLIB动态代理
+
+

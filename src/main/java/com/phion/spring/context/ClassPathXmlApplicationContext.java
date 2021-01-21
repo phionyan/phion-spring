@@ -1,11 +1,10 @@
-package com.phion.spring.ioc.context;
+package com.phion.spring.context;
 
-import com.phion.spring.ioc.beans.BeanDefinition;
-import com.phion.spring.ioc.beans.factory.AbstractBeanFactory;
-import com.phion.spring.ioc.beans.factory.AutowireCapableBeanFactory;
-import com.phion.spring.ioc.beans.io.ResourceLoader;
-import com.phion.spring.ioc.beans.xml.XmlBeanDefinitionReader;
-import com.sun.org.apache.regexp.internal.RE;
+import com.phion.spring.beans.BeanDefinition;
+import com.phion.spring.beans.factory.AbstractBeanFactory;
+import com.phion.spring.beans.factory.AutowireCapableBeanFactory;
+import com.phion.spring.beans.io.ResourceLoader;
+import com.phion.spring.beans.xml.XmlBeanDefinitionReader;
 
 import java.util.Map;
 

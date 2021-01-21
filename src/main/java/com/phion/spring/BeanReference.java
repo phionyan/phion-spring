@@ -1,4 +1,4 @@
-package com.phion.spring.ioc;
+package com.phion.spring;
 
 import lombok.Data;
 

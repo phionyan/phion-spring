@@ -1,11 +1,11 @@
 package com.phion.spring.ioc;
 
-import com.phion.spring.ioc.beans.AbstractBeanDefinitionReader;
-import com.phion.spring.ioc.beans.BeanDefinition;
-import com.phion.spring.ioc.beans.factory.AbstractBeanFactory;
-import com.phion.spring.ioc.beans.factory.AutowireCapableBeanFactory;
-import com.phion.spring.ioc.beans.io.ResourceLoader;
-import com.phion.spring.ioc.beans.xml.XmlBeanDefinitionReader;
+import com.phion.spring.beans.AbstractBeanDefinitionReader;
+import com.phion.spring.beans.BeanDefinition;
+import com.phion.spring.beans.factory.AbstractBeanFactory;
+import com.phion.spring.beans.factory.AutowireCapableBeanFactory;
+import com.phion.spring.beans.io.ResourceLoader;
+import com.phion.spring.beans.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
 import java.util.Map;

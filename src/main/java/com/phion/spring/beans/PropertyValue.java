@@ -1,4 +1,4 @@
-package com.phion.spring.ioc.beans;
+package com.phion.spring.beans;
 
 import java.util.Objects;
 

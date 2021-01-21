@@ -1,6 +1,6 @@
-package com.phion.spring.ioc.beans.factory;
+package com.phion.spring.beans.factory;
 
-import com.phion.spring.ioc.beans.BeanDefinition;
+import com.phion.spring.beans.BeanDefinition;
 
 /**
  * bean工厂规范，定义基本功能

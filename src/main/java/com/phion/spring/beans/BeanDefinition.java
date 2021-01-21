@@ -1,4 +1,4 @@
-package com.phion.spring.ioc.beans;
+package com.phion.spring.beans;
 
 /**
  * 注入一个bean的时候，传入的对象

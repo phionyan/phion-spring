@@ -1,6 +1,6 @@
-package com.phion.spring.ioc.context;
+package com.phion.spring.context;
 
-import com.phion.spring.ioc.beans.factory.AbstractBeanFactory;
+import com.phion.spring.beans.factory.AbstractBeanFactory;
 
 /**
  * 抽象应用上下文，定义基本功能

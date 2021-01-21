@@ -1,8 +1,8 @@
-package com.phion.spring.ioc.beans.factory;
+package com.phion.spring.beans.factory;
 
-import com.phion.spring.ioc.beans.BeanDefinition;
-import com.phion.spring.ioc.BeanReference;
-import com.phion.spring.ioc.beans.PropertyValue;
+import com.phion.spring.beans.BeanDefinition;
+import com.phion.spring.BeanReference;
+import com.phion.spring.beans.PropertyValue;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;

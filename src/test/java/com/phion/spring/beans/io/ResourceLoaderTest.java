@@ -1,4 +1,4 @@
-package com.phion.spring.ioc.beans.io;
+package com.phion.spring.beans.io;
 
 import org.junit.Test;
 

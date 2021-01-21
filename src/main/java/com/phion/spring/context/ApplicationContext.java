@@ -1,6 +1,6 @@
-package com.phion.spring.ioc.context;
+package com.phion.spring.context;
 
-import com.phion.spring.ioc.beans.factory.BeanFactory;
+import com.phion.spring.beans.factory.BeanFactory;
 
 /**
  * 应用上下文，spring功能集结地
