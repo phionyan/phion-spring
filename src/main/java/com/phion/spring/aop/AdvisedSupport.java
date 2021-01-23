@@ -5,6 +5,9 @@ import com.phion.spring.aop.intercept.MethodInterceptor;
 /**
  * 代理相关的元数据
  *
+ * 切入方式的支持，在这里实现具体逻辑
+ *
+ * 比如拦截器，这里支持拦截方法
  * @author yanful
  * <p>
  * create in 2021/1/21 19:22

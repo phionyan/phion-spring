@@ -51,7 +51,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * @param name           对象名称，唯一标识
      * @param beanDefinition 对象定义信息
      */
-    public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
+    public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
 
         beanDefinitionMap.put(name, beanDefinition);
         beanDefinitionNames.add(name);
